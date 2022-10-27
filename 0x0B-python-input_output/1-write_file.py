@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""read_file."""
+"""write_file."""
 
 
-def write_lines(filename=""):
+def write_file(filename="", text=""):
     """
     Parameters.
 
