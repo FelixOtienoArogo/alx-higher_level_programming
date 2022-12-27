@@ -4,6 +4,7 @@
 
 import sys
 from model_state import Base, State
+from model_city import City
 from urllib.parse import quote
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
@@ -16,7 +17,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for state in session.query(State):
-        if 'a' in state.name:
-            session.delete(state)
-    session.commit()
+    for city, state in session.query(City, State)\
+                              .filter(City.state_id == State.id)\
+                              .order_by(State.id):
+        print("{}: ({}) {}".
+              format(state.name, city.id, city.name))
