@@ -19,7 +19,7 @@ def searchapi():
             print("[{}] {}".format(data["id"], data["name"]))
         else:
             print("No result")
-    except:
+    except Exception:
         print("Not a valid JSON")
 
 
